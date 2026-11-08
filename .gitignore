@@ -1,0 +1,11 @@
+/node_modules/
+/.next/
+/.npm-cache/
+/.qa/
+/next-env.d.ts
+/playwright-report/
+/test-results/
+/.env*
+*.tsbuildinfo
+Thumbs.db
+.DS_Store

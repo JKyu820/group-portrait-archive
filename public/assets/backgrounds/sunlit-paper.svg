@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 535" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="paper" x2="1" y2=".85" gradientUnits="objectBoundingBox">
+      <stop stop-color="#fff1d7"/><stop offset=".48" stop-color="#f9e5e7"/><stop offset="1" stop-color="#e8e3fa"/>
+    </linearGradient>
+    <radialGradient id="sun">
+      <stop stop-color="#fff9dc"/><stop offset=".7" stop-color="#fff0c9" stop-opacity=".92"/><stop offset="1" stop-color="#ffefcb" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="0" x2="0" y2="1">
+      <stop stop-color="#fff5ef"/><stop offset="1" stop-color="#e7d9f1"/>
+    </linearGradient>
+    <pattern id="stipple" width="7" height="7" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r=".55" fill="#a97a9f" opacity=".21"/>
+      <circle cx="5" cy="5" r=".45" fill="#fff" opacity=".85"/>
+    </pattern>
+    <path id="spark" d="M0-10C0-4 4 0 10 0 4 0 0 4 0 10 0 4-4 0-10 0-4 0 0-4 0-10Z"/>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h1160v535H0z"/>
+  <ellipse cx="569" cy="211" rx="443" ry="270" fill="url(#sun)"/>
+  <g fill="none">
+    <circle cx="579" cy="227" r="178" stroke="#fffaf0" stroke-width="2"/>
+    <circle cx="579" cy="227" r="190" stroke="#fffaf0" stroke-dasharray="2 6" stroke-width="2"/>
+    <path d="M272 320c-32-94 58-206 187-266M697 55c105 22 174 82 198 161m-34 89c29-58 21-123-13-167" stroke="#fffaf1" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M-42 216C83 287 139 260 241 163S390 35 492 36m724 68C999 125 993 252 907 284" stroke="#ffffff" stroke-opacity=".71" stroke-width="2.3"/>
+    <path d="M-44 228C84 298 146 270 247 175M1197 117c-142 14-184 77-223 120" stroke="#fff9ed" stroke-opacity=".77"/>
+    <path d="M1030 92c-53 11-67 35-71 60s10 51 35 49 39-44-3-43-64 58-45 116" stroke="#dab0cf" stroke-opacity=".58" stroke-width="2" stroke-linecap="round"/>
+    <path d="M100 86c47 13 78 41 70 68-10 29-58 14-42-11 22-33 78-4 94 24" stroke="#e9bc9f" stroke-opacity=".62" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <path d="M0 338c64-13 114-67 185-56 62 9 77 55 145 54 111 0 161-35 252-32 94 4 121 29 225 28 68 0 88-69 165-63 61 5 111 59 188 49v217H0Z" fill="#fff9f0" opacity=".62"/>
+  <path d="M0 383c105-17 208-25 348-8 148 17 182-15 292-13 128 2 245 43 520-8v181H0Z" fill="url(#ground)" opacity=".8"/>
+  <path d="M0 435c165-43 367-39 550-22 208 19 360-29 610-21m-1160 76c193-53 387-38 548-23 212 19 371-24 612-23" fill="none" stroke="#fff9f6" stroke-opacity=".72" stroke-width="2"/>
+  <path fill="url(#stipple)" d="M0 0h1160v535H0z"/>
+  <g fill="#fffdf4">
+    <use href="#spark" transform="translate(109 215) scale(1.8)"/>
+    <use href="#spark" transform="translate(224 252) scale(.76)"/>
+    <use href="#spark" transform="translate(305 86) scale(.75)"/>
+    <use href="#spark" transform="translate(475 83) scale(.6)"/>
+    <use href="#spark" transform="translate(578 96) scale(1.6)"/>
+    <use href="#spark" transform="translate(765 80) scale(.82)"/>
+    <use href="#spark" transform="translate(876 144) scale(1.36)"/>
+    <use href="#spark" transform="translate(1044 253) scale(1.72)"/>
+    <use href="#spark" transform="translate(1067 302) scale(.56)"/>
+    <use href="#spark" transform="translate(904 343) scale(.6)"/>
+    <use href="#spark" transform="translate(143 368) scale(.8)"/>
+  </g>
+  <g fill="#d8a4bd">
+    <use href="#spark" transform="translate(194 118) scale(.69)"/>
+    <use href="#spark" transform="translate(844 98) scale(.49)"/>
+    <use href="#spark" transform="translate(986 213) scale(.62)"/>
+    <use href="#spark" transform="translate(241 345) scale(.48)"/>
+    <path d="m138 274 10-1-3 10-8-1Zm177-127 9-4 2 10-8 3Zm533 27 8 3-5 9-7-3Zm184 157 9-5 3 9-8 5Z" opacity=".65"/>
+  </g>
+  <g fill="#ddb275" opacity=".7">
+    <circle cx="82" cy="276" r="3"/><circle cx="256" cy="113" r="3"/><circle cx="325" cy="106" r="2.5"/><circle cx="617" cy="61" r="3"/><circle cx="806" cy="120" r="2.6"/><circle cx="936" cy="119" r="3.2"/><circle cx="1078" cy="221" r="3"/>
+    <path d="m167 197 7-4 5 6-7 5Zm754 39 7-3 4 7-7 3Z"/>
+  </g>
+</svg>
