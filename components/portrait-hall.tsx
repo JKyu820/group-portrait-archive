@@ -96,6 +96,7 @@ export default function PortraitHall() {
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const searchRef = useRef<HTMLInputElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
+  const deepLinkDone = useRef(false)
   const selected = members.find((member) => member.memberId === selectedId)
   const term = query.normalize('NFKC').trim().toLowerCase().replace(/^#\s*/, '')
   const matches = term ? members.filter(({ memberNumber, nickname }) =>
@@ -171,6 +172,27 @@ export default function PortraitHall() {
     window.addEventListener('keydown', handleEscape)
     return () => window.removeEventListener('keydown', handleEscape)
   }, [selectedId, showResults, term])
+
+  // 深链接：?member=014 或 #014 直接翻开某位成员的名片，方便现场演示和单独分享。
+  useEffect(() => {
+    if (deepLinkDone.current) return
+    deepLinkDone.current = true
+    const params = new URLSearchParams(window.location.search)
+    const target = (params.get('member') || window.location.hash.replace(/^#/, '')).trim()
+    if (!target) return
+    const normalized = /^\d+$/.test(target) ? target.padStart(3, '0') : target
+    const found = members.find((member) => member.memberNumber === normalized || member.nickname === target)
+    if (found) selectMember(found.memberId, true)
+  }, [])
+
+  // 地址栏始终跟着当前名片走，复制出去就是这位成员的直达链接。
+  useEffect(() => {
+    const url = new URL(window.location.href)
+    const current = members.find((member) => member.memberId === selectedId)
+    if (current) url.searchParams.set('member', current.memberNumber)
+    else url.searchParams.delete('member')
+    window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`)
+  }, [selectedId])
 
   return (
     <>
