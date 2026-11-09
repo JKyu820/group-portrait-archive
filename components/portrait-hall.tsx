@@ -38,6 +38,7 @@ function portraitStyle(member: Member) {
 
 function Profile({ member, onClose }: { member: Member; onClose: () => void }) {
   const details = member.profile
+  const memories = details ? details.memory.split(/[，,、]\s*/).filter(Boolean) : []
   return (
     <aside
       id="member-profile"
@@ -54,25 +55,31 @@ function Profile({ member, onClose }: { member: Member; onClose: () => void }) {
       <div className="profile-identity">
         <div className="profile-avatar"><img src={member.avatar} alt={`${member.nickname}的头像`} /></div>
         <div>
-          <span className="profile-test micro">虚构测试人物</span>
+          <span className="profile-test micro">第六组伙伴</span>
           <h2 id="profile-name">{member.nickname}</h2>
-          {details && <p>{details.introduction}</p>}
+          {details && <p>{details.memory}</p>}
         </div>
       </div>
       {details && (
         <>
-          <section className="profile-section">
-            <h3>个人简介</h3>
-            <p>{details.bio}</p>
-          </section>
-          <section className="profile-section">
-            <h3>兴趣爱好</h3>
-            <ul className="profile-chips">{details.interests.map((interest) => <li key={interest}>{interest}</li>)}</ul>
-          </section>
-          <section className="profile-section">
-            <h3>个人关键词</h3>
-            <ul className="profile-chips keywords">{details.tags.map((tag) => <li key={tag}># {tag}</li>)}</ul>
-          </section>
+          {details.trait && (
+            <section className="profile-section">
+              <h3>个人特质</h3>
+              <p>{details.trait}</p>
+            </section>
+          )}
+          {details.value && (
+            <section className="profile-section">
+              <h3>团队价值</h3>
+              <p>{details.value}</p>
+            </section>
+          )}
+          {memories.length > 0 && (
+            <section className="profile-section">
+              <h3>别人记住我</h3>
+              <ul className="profile-chips keywords">{memories.map((tag) => <li key={tag}># {tag}</li>)}</ul>
+            </section>
+          )}
         </>
       )}
       <div className="card-reserve">
@@ -173,7 +180,7 @@ export default function PortraitHall() {
             <img src="/archive-mark.svg" alt="" width="38" height="38" />
             <div><strong>群像纪念册</strong><span className="micro">GROUP PORTRAIT ARCHIVE</span></div>
           </div>
-          <span className="edition micro"><span /> 阶段一原型 <b>01</b></span>
+          <span className="edition micro"><span /> 第六组群像 <b>06</b></span>
         </div>
       </header>
 
@@ -214,7 +221,7 @@ export default function PortraitHall() {
             {showResults && term && (
               <div className="search-results">
                 <p className="results-caption" role="status">
-                  {matches.length ? `找到 ${matches.length} 位测试人物` : '没有找到人物，试试「001」或「小满」。'}
+                  {matches.length ? `找到 ${matches.length} 位伙伴` : '没有找到人物，试试「001」或「稳稳子」。'}
                 </p>
                 {matches.length > 0 && (
                   <ul>
@@ -260,6 +267,7 @@ export default function PortraitHall() {
                 >
                   <span className="portrait-shadow" />
                   <img src={member.avatar} alt="" draggable={false} />
+                  <span className="portrait-name">{member.nickname}</span>
                 </button>
               )
             })}
@@ -272,8 +280,8 @@ export default function PortraitHall() {
           <button type="button" onClick={reset} disabled={!selected && !query}><Icon name="reset" /> 返回全体</button>
         </div>
         <footer className="site-footer">
-          <span className="micro">GROUP PORTRAIT ARCHIVE <span>©</span> VOL. 01</span>
-          <span>人物形象与资料均为虚构测试素材</span>
+          <span className="micro">GROUP PORTRAIT ARCHIVE <span>©</span> VOL. 06</span>
+          <span>北辰青年线上实习 · 第六组群像纪念册</span>
         </footer>
       </main>
     </>
