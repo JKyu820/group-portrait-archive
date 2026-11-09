@@ -9,6 +9,4 @@
   <circle cx='320' cy='330' r='118' fill='#9db8e8' fill-opacity='0.9'/>
   <path d='M120 800 C120 610 220 520 320 520 C420 520 520 610 520 800 Z' fill='#9db8e8' fill-opacity='0.9'/>
   <circle cx='320' cy='330' r='118' fill='none' stroke='#ffffff' stroke-width='6' stroke-opacity='0.7'/>
-  <text x='320' y='712' text-anchor='middle' font-family='sans-serif' font-size='52' font-weight='700' fill='#4a3550'>跨界侠</text>
-  <text x='320' y='758' text-anchor='middle' font-family='sans-serif' font-size='26' letter-spacing='6' fill='#4a3550' fill-opacity='0.75'>画像待补 · NO.003</text>
 </svg>

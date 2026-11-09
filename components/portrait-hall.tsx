@@ -36,6 +36,25 @@ function portraitStyle(member: Member) {
   } as CSSProperties
 }
 
+function findLinkedMember(value: string | null) {
+  const target = value?.normalize('NFKC').trim()
+  if (!target) return
+  const number = /^\d+$/.test(target) ? target.padStart(3, '0') : target
+  return members.find((member) => member.memberNumber === number || member.nickname === target)
+}
+
+function findLegacyLinkedMember(hash: string) {
+  return /^#\d+$/.test(hash) ? findLinkedMember(hash.slice(1)) : undefined
+}
+
+function syncMemberLink(memberNumber?: string) {
+  const url = new URL(window.location.href)
+  if (memberNumber) url.searchParams.set('member', memberNumber)
+  else url.searchParams.delete('member')
+  if (findLegacyLinkedMember(url.hash)) url.hash = ''
+  if (url.href !== window.location.href) window.history.replaceState(window.history.state, '', url)
+}
+
 function Profile({ member, onClose }: { member: Member; onClose: () => void }) {
   const details = member.profile
   const memories = details ? details.memory.split(/[，,、]\s*/).filter(Boolean) : []
@@ -106,6 +125,7 @@ export default function PortraitHall() {
 
   function clearSelection() {
     setSelectedId(null)
+    syncMemberLink()
   }
 
   function reset() {
@@ -121,8 +141,11 @@ export default function PortraitHall() {
   }
 
   function selectMember(memberId: string, fromSearch = false) {
+    const member = members.find((entry) => entry.memberId === memberId)
+    if (!member) return
     setSelectedId(memberId)
     setShowResults(false)
+    syncMemberLink(member.memberNumber)
     const stage = stageRef.current
     const portrait = stage?.querySelector<HTMLButtonElement>(`[data-member-id="${memberId}"]`)
     if (fromSearch) {
@@ -173,26 +196,14 @@ export default function PortraitHall() {
     return () => window.removeEventListener('keydown', handleEscape)
   }, [selectedId, showResults, term])
 
-  // 深链接：?member=014 或 #014 直接翻开某位成员的名片，方便现场演示和单独分享。
+  // Old numeric fragments open a profile and are converted to the shareable query URL.
   useEffect(() => {
     if (deepLinkDone.current) return
     deepLinkDone.current = true
-    const params = new URLSearchParams(window.location.search)
-    const target = (params.get('member') || window.location.hash.replace(/^#/, '')).trim()
-    if (!target) return
-    const normalized = /^\d+$/.test(target) ? target.padStart(3, '0') : target
-    const found = members.find((member) => member.memberNumber === normalized || member.nickname === target)
+    const url = new URL(window.location.href)
+    const found = findLinkedMember(url.searchParams.get('member')) ?? findLegacyLinkedMember(url.hash)
     if (found) selectMember(found.memberId, true)
   }, [])
-
-  // 地址栏始终跟着当前名片走，复制出去就是这位成员的直达链接。
-  useEffect(() => {
-    const url = new URL(window.location.href)
-    const current = members.find((member) => member.memberId === selectedId)
-    if (current) url.searchParams.set('member', current.memberNumber)
-    else url.searchParams.delete('member')
-    window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`)
-  }, [selectedId])
 
   return (
     <>
@@ -287,9 +298,7 @@ export default function PortraitHall() {
                   aria-controls={active ? 'member-profile' : undefined}
                   onClick={() => selectMember(member.memberId)}
                 >
-                  <span className="portrait-shadow" />
                   <img src={member.avatar} alt="" draggable={false} />
-                  <span className="portrait-name">{member.nickname}</span>
                 </button>
               )
             })}

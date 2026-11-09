@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: '群像纪念册 · 日光留影',
-  description: '在一张合照里，遇见 26 位虚构测试人物。群像纪念册排布原型。',
+  description: '在一张合照里，遇见第六组的 28 位伙伴。',
   icons: { icon: '/archive-mark.svg' },
 }
 
