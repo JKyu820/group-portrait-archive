@@ -43,7 +43,7 @@ const roster: ReadonlyArray<{
     },
   },
   {
-    nickname: '跨界侠', accent: '#9db8e8', avatar: '/assets/members/member-003.svg',
+    nickname: '跨界侠', accent: '#9db8e8', avatar: '/assets/members/member-003.webp',
     profile: {
       trait: '擅长评估创意可行性，留意细节，提倡互相鼓励，只提建议不评判。',
       value: '把控创意落地质量，集思广益，推动想法落地生根。',
@@ -75,7 +75,7 @@ const roster: ReadonlyArray<{
     },
   },
   {
-    nickname: '探索怡', accent: '#e8c49d', avatar: '/assets/members/member-007.svg',
+    nickname: '探索怡', accent: '#e8c49d', avatar: '/assets/members/member-007.webp',
     profile: {
       trait: '好奇心旺盛，愿意尝试新鲜事物，希望在项目过程提升个人能力。',
       value: '配合团队分工，依托自身特长补齐团队能力短板，依靠经验共享实现高效协作。',
@@ -83,7 +83,7 @@ const roster: ReadonlyArray<{
     },
   },
   {
-    nickname: '认真芳', accent: '#a8c8a0', avatar: '/assets/members/member-008.svg',
+    nickname: '认真芳', accent: '#a8c8a0', avatar: '/assets/members/member-008.webp',
     profile: {
       trait: '积极参与小组破冰与共创讨论，紧跟团队节奏。',
       value: '参与团队脑暴，配合小组各项活动推进。',
@@ -195,7 +195,7 @@ const roster: ReadonlyArray<{
     },
   },
   {
-    nickname: '规划洋', accent: '#c0a8d8', avatar: '/assets/members/member-022.svg',
+    nickname: '规划洋', accent: '#c0a8d8', avatar: '/assets/members/member-022.webp',
     profile: {
       trait: '执行力强，目标感明确，对 AI 有学习热情。',
       value: '善于把概念与逻辑核对清楚，也乐于倾听和沟通。',
@@ -243,7 +243,7 @@ const roster: ReadonlyArray<{
     },
   },
   {
-    nickname: '冒泡喜', accent: '#a1cfbb', avatar: '/assets/members/member-028.svg',
+    nickname: '冒泡喜', accent: '#a1cfbb', avatar: '/assets/members/member-028.webp',
     profile: {
       trait: '开朗外向，认真负责。',
       value: '随时随地冒泡同步进展，从不忘记任何任务。',

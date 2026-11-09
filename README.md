@@ -40,7 +40,7 @@ Linux 若缺少 Chromium 系统依赖，可使用 `npx playwright install --with
 | --- | --- |
 | `data/members.ts` | 28 位成员的编号、化名、图片地址和资料（个人特质 / 团队价值 / 记忆点） |
 | `data/portrait-layout.ts` | 桌面与手机各排的槽位顺序、横向范围和卡片中心位置 |
-| `public/assets/members/` | 28 张成员形象：真实画像为 webp，暂缺画像的使用统一风格占位 SVG |
+| `public/assets/members/` | 28 张成员形象，统一裁为 3:4 的 webp（640×854，人脸优先裁切） |
 | `public/assets/backgrounds/` | 大厅使用的原创背景 |
 | `components/portrait-hall.tsx` | 合影、搜索和资料名片 |
 | `app/globals.css` | 桌面侧栏、移动底部面板、层级和动效 |
